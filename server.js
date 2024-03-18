@@ -60,6 +60,19 @@ app.get('*', (req, res) => {
   res.status(404).send("Not Found");
 });
 
+app.post("/initialize", (request, response) => {
+  const body = request.body;
+  response.send({
+    canvas: {
+      content: {
+        components: [
+          { type: "button", label: "Click ME!!!!", style: "primary", id: "url_button", action: {type: "submit"} },
+        ],
+      },
+    },
+  });
+});
+
 // Listen and serve.
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
